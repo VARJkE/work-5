@@ -10,7 +10,7 @@ function addTask() {
     let newTask = document.createElement('div');
     newTask.id = 'addedTask';
     newTask.innerHTML = '<h3>'+taskName+'</h3> <p>'+taskDesc+'</p> <p>'+taskAssign+'</p> <p>'+taskAddTime+'</p';
-
+    document.getElementById('tasksList').classList.add('border-bottom');
     switch (taskStatus) {
         case 'toDo':
             newTask.style.backgroundColor = '#e5eb42';
