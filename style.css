@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.taskForm {
+    display: flex;
+    padding: 10px;
+}
+
+.taskSelect {
+    margin-left: 20px;
+}
+
+.taskFormInputs {
+    text-align: right;
+}
+
+input[type='text'] {
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px;
+}
+
+.button {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #6f706e;
+    border: none;
+}
+
+.button:hover {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #c0c2be;
+    border: none;
+    transition: 0.5s;
+}
+
+#tasks {
+    display: flex;
+    justify-content: space-between;
+    border-right: solid 1px #000000;
+    border-left: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    align-items: center;
+}
+
+#addedTask {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #000000;
+    margin: 10px;
+}
+
+#addedTask p {
+    margin: 0;
+}
+
+#addedTask h3 {
+    text-align: center;
+}
+
+#tasksList {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: auto;
+}
+
+.border {
+    border: solid 1px #000000;
+}
+
+.border-right {
+    border-right: solid 1px #000000;
+}
+
+.border-left {
+    border-left: solid 1px #000000;
+}
+
+.border-bottom {
+    border-bottom: solid 1px #000000;
+}
+
+.border-top {
+    border-top: solid 1px #000000;
+}
+
+.tasksTitle {
+    text-align: center;
+    border-bottom: solid 1px #000000;
+    background-color: #c0c2be;
+    margin: 0;
+}

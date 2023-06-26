@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="taskForm">
+        <div class="taskFormInputs">
+            <p> 
+                <label for="taskName">მოთხოვნის სათაური</label>
+                <input id="taskName" type="text">
+            </p>  
+            <p>
+                <label for="taskDesc">მოთხოვნის აღწერა</label>
+                <input id="taskDesc" type="text">
+            </p>
+            <p>
+                <label for="taskAssign">ტექნიკოსი</label>
+                <input id="taskAssign" type="text">
+            </p>
+            <button class="button" type="button" onclick="addTask()">მოთხოვნის დამატება</button>    
+        </div>
+        <div class="taskSelect">
+            <p>
+                <label for="taskStatus">მოთხოვნის სტატუსი</label>
+                <select id="taskStatus">
+                    <option value="toDo">To do</option>
+                    <option value="inProgress">In Progress</option>
+                    <option value="testing">Testing</option>
+                    <option value="done">Done</option>
+                </select>
+            </p>
+        </div>
+    </div>
+    <div id="tasksList">
+        <div class="border-right border-left border-top border-bottom" id="tasksToDo">
+            <h3 class="tasksTitle">To Do</h3> 
+        </div>
+        <div class="border-right border-top border-bottom" id="tasksInProgress">
+            <h3 class="tasksTitle border-bottom">In Progress</h3> 
+        </div>
+        <div class="border-right border-top border-bottom" id="tasksTesting">
+            <h3 class="tasksTitle">Testing</h3> 
+        </div>
+        <div class="border-top border-bottom" id="tasksDone"> 
+            <h3 class="tasksTitle">Done</h3>
+        </div>
+    </div>
+</body>
+</html>
