@@ -104,3 +104,8 @@ input[type='text'] {
     background-color: #c0c2be;
     margin: 0;
 }
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
