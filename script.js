@@ -22,7 +22,7 @@ function addTask() {
     removeTask.src = 'img/remove.png';
     removeTask.className = 'icon';
     removeTask.addEventListener('click', function() {
-        document.getElementById(newTask.id).remove();
+        newTask.remove();
         removeTask.removeEventListener('click');
     });
 
