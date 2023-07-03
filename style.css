@@ -13,7 +13,7 @@ body {
     margin-left: 20px;
 }
 
-.taskFormInputs {
+#taskFormInputs {
     text-align: right;
 }
 
@@ -29,6 +29,9 @@ input[type='text'] {
     cursor: pointer;
     background-color: #6f706e;
     border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .button:hover {
@@ -49,9 +52,12 @@ input[type='text'] {
     align-items: center;
 }
 
-#addedTask {
-    display: flex;
-    flex-direction: column;
+/* #addedTask {
+    border: solid 1px #000000;
+    margin: 10px;
+} */
+
+#tasksToDo div, #tasksInProgress div, #tasksTesting div, #tasksDone div {
     border: solid 1px #000000;
     margin: 10px;
 }
@@ -68,6 +74,8 @@ input[type='text'] {
     display: grid;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: auto;
+    min-height: 290px;
+    border-bottom: 1px solid #000000;
 }
 
 .border {

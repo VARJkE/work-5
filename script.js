@@ -1,6 +1,8 @@
 const months = ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი', 'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი'];
+let divId = 0
 
 function addTask() {
+    divId++;
     let taskName = document.getElementById('taskName').value;
     let taskDesc = document.getElementById('taskDesc').value;
     let taskAssign = document.getElementById('taskAssign').value;
@@ -8,27 +10,42 @@ function addTask() {
     let todayTimeDate = new Date();
     let taskAddTime = todayTimeDate.getDate() + ' ' + months[todayTimeDate.getMonth()] + ' ' + todayTimeDate.getHours() + ':' + todayTimeDate.getMinutes() + ':' + todayTimeDate.getSeconds();
     let newTask = document.createElement('div');
-    newTask.id = 'addedTask';
-    newTask.innerHTML = '<h3>'+taskName+'</h3> <p>'+taskDesc+'</p> <p>'+taskAssign+'</p> <p>'+taskAddTime+'</p';
+    newTask.id = 'addedTask-'+divId;
+    let buttonRemove = document.createElement('button');
+    buttonRemove.setAttribute('class', 'button');
+    buttonRemove.setAttribute('onclick', 'removeTask(this)');
+    buttonRemove.textContent = 'Delete';
+    newTask.innerHTML = '<h3>'+taskName+'</h3> <p>'+taskDesc+'</p> <p>'+taskAssign+'</p> <p>'+taskAddTime+'</p> <p>'+taskStatus+'</p>';
     document.getElementById('tasksList').classList.add('border-bottom');
     switch (taskStatus) {
         case 'toDo':
             newTask.style.backgroundColor = '#e5eb42';
             document.getElementById('tasksToDo').appendChild(newTask);
+            document.getElementById(newTask.id).appendChild(buttonRemove);
             break;
         case 'inProgress':
             newTask.style.backgroundColor = '#48e8a3';
             document.getElementById('tasksInProgress').appendChild(newTask);
+            document.getElementById(newTask.id).appendChild(buttonRemove);
             break;    
         case 'testing':
             newTask.style.backgroundColor = '#8a8c88';
             document.getElementById('tasksTesting').appendChild(newTask);
+            document.getElementById(newTask.id).appendChild(buttonRemove);
             break;    
         case 'done':
             newTask.style.backgroundColor = '#45d96d';
             document.getElementById('tasksDone').appendChild(newTask);
+            document.getElementById(newTask.id).appendChild(buttonRemove);
             break;
         default:
             console.log('არასწორი მნიშნველობა');       
     }
+    // document.getElementById('tasksForm').reset();
 }
+
+function removeTask(getDivId) {
+    let parentId = getDivId.parentNode.id;
+    document.getElementById(parentId).remove();
+}
+

@@ -8,11 +8,13 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div class="taskForm">
-        <div class="taskFormInputs">
+        <form id="tasksForm">
+        <div id="taskFormInputs">
             <p> 
                 <label for="taskName">მოთხოვნის სათაური</label>
-                <input id="taskName" type="text">
+                <input id="taskName" type="text" required>
             </p>  
             <p>
                 <label for="taskDesc">მოთხოვნის აღწერა</label>
@@ -22,8 +24,9 @@
                 <label for="taskAssign">ტექნიკოსი</label>
                 <input id="taskAssign" type="text">
             </p>
-            <button class="button" type="button" onclick="addTask()">მოთხოვნის დამატება</button>    
+            <button class="button" type="button" onclick="addTask()">მოთხოვნის დამატება</button>
         </div>
+        </form>
         <div class="taskSelect">
             <p>
                 <label for="taskStatus">მოთხოვნის სტატუსი</label>
@@ -35,7 +38,9 @@
                 </select>
             </p>
         </div>
+        
     </div>
+    
     <div id="tasksList">
         <div class="border-right border-left border-top " id="tasksToDo">
             <h3 class="tasksTitle">To Do</h3> 
