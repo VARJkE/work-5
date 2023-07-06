@@ -13,7 +13,6 @@ function addTask() {
     let taskAddTime = todayTimeDate.getDate() + ' ' + months[todayTimeDate.getMonth()] + ' ' + todayTimeDate.getHours() + ':' + todayTimeDate.getMinutes() + ':' + todayTimeDate.getSeconds();
     let newTask = document.createElement('div');
     newTask.id = divId;
-    //ak unda shevkmna axali div da newtask-shi chavamato divi
     
     //წაშლის მეორე ვარიანტი
     // let buttonRemove = document.createElement('button');
@@ -54,10 +53,8 @@ function addTask() {
     switch (taskStatus) {
         case 'toDo':
             newTask.style.backgroundColor = '#e5eb42';
-            //new div for tasks
             document.getElementById('tasksToDo').appendChild(newTask);
             // document.getElementById(newTask.id).appendChild(buttonRemove);
-            //new div for icons
             document.getElementById(newTask.id).appendChild(removeIcon);
             document.getElementById(newTask.id).appendChild(editIcon);
             break;
