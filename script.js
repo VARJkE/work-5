@@ -30,7 +30,7 @@ function addTask() {
 
     let editIcon = document.createElement('img');
     editIcon.src = 'img/edit.png';
-    editIcon.className = 'icon';
+    editIcon.className = 'icon-edit';
     editIcon.addEventListener('click', function() {
         editTask(newTask.id);
     });
@@ -49,6 +49,8 @@ function addTask() {
     };
 
     tasksArray.push(tasksObj);
+
+    if (checkFieldValid(taskName, taskDesc, taskAssign)) {
 
     switch (taskStatus) {
         case 'toDo':
@@ -81,10 +83,14 @@ function addTask() {
             break;
         default:
             console.log('არასწორი მნიშნველობა');       
-    }
+    };
     divId++;
-    // document.getElementById('tasksForm').reset();
-}
+    document.getElementById('tasksForm').reset();
+    document.getElementById('taskStatus').value = 'toDo';
+    } else {
+        alert('ველები არ არის შევსებული');
+    };
+};
 //წაშლის მეორე ვარიანტი
 // function removeTask(getDivId) {
 //     let parentId = getDivId.parentNode.id;
@@ -98,17 +104,23 @@ function saveTask() {
     let editTaskStatus = document.getElementById('taskStatus').value;
     let todayTimeDate = new Date();
     let taskEditTime = todayTimeDate.getDate() + ' ' + months[todayTimeDate.getMonth()] + ' ' + todayTimeDate.getHours() + ':' + todayTimeDate.getMinutes() + ':' + todayTimeDate.getSeconds();
-
+    let oldStatus = tasksArray[currentDiv].taskStatus;
     tasksArray[currentDiv].taskName = editTaskName;
     tasksArray[currentDiv].taskDesc = editTaskDesc;
     tasksArray[currentDiv].taskAssign = editTaskAssign;
     tasksArray[currentDiv].taskAddTime = taskEditTime;
     tasksArray[currentDiv].taskStatus = editTaskStatus;
 
+    let editChilds = document.getElementById(currentDiv).childNodes;
+    editChilds[0].innerHTML = 'Task Name: '+editTaskName;
+    editChilds[2].innerHTML = 'Task Desc: '+editTaskDesc;
+    editChilds[4].innerHTML = 'Task Assign: '+editTaskAssign;
+    editChilds[6].innerHTML = 'Edit time: '+taskEditTime;
+
     let editedTask = document.createElement('div');
     editedTask.id = currentDiv;
     editedTask.innerHTML = '<h3>Task Name: '+editTaskName+'</h3> <p>Task Desc: '+editTaskDesc+'</p> <p>Task Assign: '+editTaskAssign+'</p> <p>Edit time: '+taskEditTime+'</p>';
-    
+    if (oldStatus != editTaskStatus ) {
     switch (document.getElementById('taskStatus').value) {
         case 'toDo':
             editedTask.style.backgroundColor = '#e5eb42';
@@ -141,10 +153,12 @@ function saveTask() {
         default:
             console.log('არასწორი მნიშნველობა'); 
     }
-
+}
     document.getElementById('saveButton').setAttribute('disabled', true);
+    document.getElementById('addButton').removeAttribute('disabled');
     document.getElementById('tasksForm').reset();
-    let icons = document.getElementsByClassName('icon');
+    document.getElementById('taskStatus').value = 'toDo';
+    let icons = document.getElementsByClassName('icon-edit');
     for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = 'inline-block';
     };
@@ -158,8 +172,9 @@ function editTask(taskId) {
     document.getElementById('taskStatus').value = tasksArray[taskId].taskStatus;
 
     document.getElementById('saveButton').removeAttribute('disabled');
+    document.getElementById('addButton').setAttribute('disabled', true);
 
-    let icons = document.getElementsByClassName('icon');
+    let icons = document.getElementsByClassName('icon-edit');
     for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = 'none';
     };
@@ -167,3 +182,10 @@ function editTask(taskId) {
     currentDiv = taskId;
 }
 
+function checkFieldValid(taskName, taskDesc, taskAssign) {
+    if (taskName == '' || taskDesc == '' || taskAssign =='') {
+        return false;
+    } else {
+        return true;
+    }
+}
