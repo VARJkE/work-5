@@ -13,7 +13,7 @@ function addTask() {
     let taskAddTime = todayTimeDate.getDate() + ' ' + months[todayTimeDate.getMonth()] + ' ' + todayTimeDate.getHours() + ':' + todayTimeDate.getMinutes() + ':' + todayTimeDate.getSeconds();
     let newTask = document.createElement('div');
     newTask.id = divId;
-    
+
     //წაშლის მეორე ვარიანტი
     // let buttonRemove = document.createElement('button');
     // buttonRemove.setAttribute('class', 'button');
